@@ -6,6 +6,7 @@ module.exports = (async () => {
   } = await getDefaultConfig();
   return {
     transformer: {
+      assetPlugins: ['react-native-dotenv'],
       babelTransformerPath: require.resolve("react-native-sass-transformer")
     },
     resolver: {

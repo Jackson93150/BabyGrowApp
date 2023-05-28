@@ -21,10 +21,10 @@ export type StackParamList = {
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   StackParamList,
-  "Home"
+  "SignUp"
 >;
 
-export default function HomeScreen() {
+export default function SignUpScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
 
   return (
@@ -38,23 +38,29 @@ export default function HomeScreen() {
           style={styles.logo}
           resizeMode="contain"
         />
+        <Text style={styles.textFieldName}>Nom</Text>
+        <TextInput
+          placeholder="Entrez votre nom"
+          style={styles.textFieldPlaceholder}
+        />
+        <Text style={styles.textFieldName}>Prénom</Text>
+        <TextInput
+          placeholder="Entrez votre prénom"
+          style={styles.textFieldPlaceholder}
+        />
         <Text style={styles.textFieldName}>Email</Text>
         <TextInput
           placeholder="example@gmail.com"
           style={styles.textFieldPlaceholder}
         />
         <Text style={styles.textFieldName}>Mot de Passe</Text>
-        <TextInput
-          placeholder="••••••••"
-          secureTextEntry={true}
-          style={styles.textFieldPlaceholder}
-        />
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
+        <TextInput placeholder="••••••••" style={styles.textFieldPlaceholder} />
+        <Pressable style={styles.button} onPress={() => navigation.navigate('Home')}>
+          <Text style={styles.buttonText}>Inscrivez-vous</Text>
         </Pressable>
         <Text style={styles.signUpText}>
-          Si vous n'avez pas de compte
-          <Text style={styles.singUpLink} onPress={() => navigation.navigate('SignUp')}>Inscrivez-vous</Text>
+          Si vous avez déjà un compte
+          <Text style={styles.singUpLink} onPress={() => navigation.navigate('Home')}>Connectez-vous</Text>
         </Text>
       </View>
     </ImageBackground>
