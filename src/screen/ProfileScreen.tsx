@@ -10,51 +10,34 @@ import {
 import React, { useState } from "react";
 import Colors from "../constant/Colors";
 import FontSize from "../constant/FontSize";
-import { getBabies, login } from "../services/api";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { saveUser } from "../services/api";
 
 export type StackParamList = {
   Home: undefined;
   SignUp: undefined;
   Login: undefined;
-  NewUser: undefined;
-  Welcome: undefined;
 };
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   StackParamList,
-  "Home"
+  "SignUp"
 >;
 
-export default function HomeScreen() {
+export default function ProfileScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
 
-  const [errorVisible, setErrorVisible] = useState(false);
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
   const [email, setEmail] = useState("");
   const [motDePasse, setMotDePasse] = useState("");
-
-  const redirectConnexion = async () => {
-    try {
-      const data = {
-        email: email,
-        password: motDePasse,
-      };
-      await login(data);
-      const isBaby = await getBabies()
-      if(isBaby){
-        navigation.navigate("Welcome");
-      }else{
-        navigation.navigate("NewUser");
-      }
-    } catch (error: any) {
-      setErrorVisible(true);
-    }
-  };
+  const [errorVisible, setErrorVisible] = useState(false);
+  const [errorEmailVisible, setErrorEmailVisible] = useState(false);
 
   return (
     <ImageBackground
-      source={require("/assets/Background.png")}
+      source={require("/assets/WelcomeBackground.png")}
       style={styles.container}
     >
       <View style={styles.content}>
@@ -62,6 +45,20 @@ export default function HomeScreen() {
           source={require("/assets/logo.png")}
           style={styles.logo}
           resizeMode="contain"
+        />
+        <Text style={styles.textFieldName}>Nom</Text>
+        <TextInput
+          placeholder="Entrez votre nom"
+          style={styles.textFieldPlaceholder}
+          value={nom}
+          onChangeText={(text) => setNom(text)}
+        />
+        <Text style={styles.textFieldName}>Prénom</Text>
+        <TextInput
+          placeholder="Entrez votre prénom"
+          style={styles.textFieldPlaceholder}
+          value={prenom}
+          onChangeText={(text) => setPrenom(text)}
         />
         <Text style={styles.textFieldName}>Email</Text>
         <TextInput
@@ -73,26 +70,27 @@ export default function HomeScreen() {
         <Text style={styles.textFieldName}>Mot de Passe</Text>
         <TextInput
           placeholder="••••••••"
-          secureTextEntry={true}
           style={styles.textFieldPlaceholder}
           value={motDePasse}
           onChangeText={(text) => setMotDePasse(text)}
         />
         {errorVisible && (
           <Text style={styles.textError}>
-            Email et/ou mot de passe invalide.
+            Veuillez remplir tous les champs requis.
           </Text>
         )}
-        <Pressable style={styles.button} onPress={redirectConnexion}>
-          <Text style={styles.buttonText}>Login</Text>
-        </Pressable>
+        {errorEmailVisible && (
+          <Text style={styles.textError}>
+            L'Email que vous avez utilisé est déjà utilisé ou invalide.
+          </Text>
+        )}
         <Text style={styles.signUpText}>
-          Si vous n'avez pas de compte
+          Si vous avez déjà un compte
           <Text
             style={styles.singUpLink}
-            onPress={() => navigation.navigate("SignUp")}
+            onPress={() => navigation.navigate("Home")}
           >
-            Inscrivez-vous
+            Connectez-vous
           </Text>
         </Text>
       </View>
