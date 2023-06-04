@@ -41,8 +41,8 @@ export default function SignUpScreen() {
       return;
     } else {
       const user = {
-        first_name: nom,
-        last_name: prenom,
+        first_name: prenom,
+        last_name: nom,
         email: email,
         password: motDePasse,
       };

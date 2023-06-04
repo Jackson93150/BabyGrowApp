@@ -7,6 +7,8 @@ import NewUserScreen from "../screen/NewUserScreen";
 import AddBabyScreen from "../screen/AddBabyScreen";
 import WelcomeScreen from "../screen/WelcomeScreen";
 import ProfileScreen from "../screen/ProfileScreen";
+import EditProfileScreen from "../screen/EditProfileScreen";
+import NewBabyScreen from "../screen/NewBabyScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +16,8 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="NewBaby" component={NewBabyScreen} />
+      <Stack.Screen name="EditProfile" component={EditProfileScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
