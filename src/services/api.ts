@@ -40,7 +40,7 @@ export const getBabies = async () => {
       "Content-Type": "application/json",
     },
   });
-  return result;
+  return result.data;
 };
 
 export const getMe = async () => {

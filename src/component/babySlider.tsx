@@ -14,7 +14,7 @@ const BabySlide = () => {
     const fetchBabies = async () => {
       try {
         const response = await getBabies();
-        setBabies(response.data);
+        setBabies(response);
       } catch (error) {
         console.log(error);
       }

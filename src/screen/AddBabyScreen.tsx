@@ -125,8 +125,8 @@ export default function AddBabyScreen() {
             value={dateNaissance}
             onChangeText={(text) => {
               const numericValue = text.replace(/[^0-9]/g, "");
+              let formattedValue = numericValue;
               if (numericValue.length <= 8) {
-                let formattedValue = numericValue;
                 if (formattedValue.length >= 2) {
                   formattedValue =
                     formattedValue.slice(0, 2) + "/" + formattedValue.slice(2);
@@ -136,6 +136,13 @@ export default function AddBabyScreen() {
                     formattedValue.slice(0, 5) + "/" + formattedValue.slice(5);
                 }
                 setDateNaissance(formattedValue);
+              }
+              if (formattedValue.length >= 10) {
+                const year = formattedValue.slice(6, 10);
+                const month = formattedValue.slice(3, 5);
+                const day = formattedValue.slice(0, 2);
+                const formattedDate = `${year}-${month}-${day}`;
+                setDateNaissance(formattedDate);
               }
             }}
             keyboardType="numeric"

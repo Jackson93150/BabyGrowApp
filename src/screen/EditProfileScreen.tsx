@@ -14,16 +14,17 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import Navigation from "../component/navigation";
 import { getMe, updateUser } from "../services/api";
+import Return from "../component/return";
 
 export type StackParamList = {
   Home: undefined;
-  SignUp: undefined;
-  Login: undefined;
+  EditProfile: undefined;
+  Profile: undefined;
 };
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   StackParamList,
-  "SignUp"
+  "EditProfile"
 >;
 
 export default function EditProfileScreen() {
@@ -69,6 +70,7 @@ export default function EditProfileScreen() {
       source={require("/assets/WelcomeBackground.png")}
       style={styles.container}
     >
+      <Return onPress={() => navigation.navigate("Profile")}/>
       {user && (
         <View style={styles.content}>
           <Text style={styles.title}>Profile</Text>

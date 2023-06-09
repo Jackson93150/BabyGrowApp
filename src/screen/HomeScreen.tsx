@@ -42,7 +42,7 @@ export default function HomeScreen() {
       };
       await login(data);
       const isBaby = await getBabies()
-      if(isBaby){
+      if(isBaby.length > 0) {
         navigation.navigate("Welcome");
       }else{
         navigation.navigate("NewUser");

@@ -14,6 +14,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import Navigation from "../component/navigation";
 import { getMe, saveProfile } from "../services/api";
 import PickerSelect from "../component/picker";
+import Return from "../component/return";
 
 const gender = [
   { label: "M", value: "Male" },
@@ -39,14 +40,14 @@ const relations = [
 ];
 
 export type StackParamList = {
-  Home: undefined;
-  SignUp: undefined;
-  Login: undefined;
+  Welcome: undefined;
+  NewBaby: undefined;
+  Profile: undefined;
 };
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   StackParamList,
-  "SignUp"
+  "NewBaby"
 >;
 
 export default function NewBabyScreen() {
@@ -101,6 +102,7 @@ export default function NewBabyScreen() {
       source={require("/assets/WelcomeBackground.png")}
       style={styles.container}
     >
+      <Return onPress={() => navigation.navigate("Profile")}/>
       {user && (
         <View style={styles.content}>
           <Text style={styles.title}>Bébé</Text>

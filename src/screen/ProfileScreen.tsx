@@ -14,6 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import Navigation from "../component/navigation";
 import { getMe } from "../services/api";
+import Return from "../component/return";
 
 export type StackParamList = {
   Welcome: undefined;
@@ -45,6 +46,7 @@ export default function ProfileScreen() {
       source={require("/assets/WelcomeBackground.png")}
       style={styles.container}
     >
+      <Return onPress={() => navigation.navigate("Welcome")}/>
       {user && (
         <View style={styles.content}>
           <Text style={styles.title}>Mon Profil</Text>
