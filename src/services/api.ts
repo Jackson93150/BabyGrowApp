@@ -53,3 +53,16 @@ export const getMe = async () => {
   });
   return result;
 };
+
+export const getRecipes = async () => {
+  const result = await axios.get(
+    `${process.env.STRAPI_URL}/api/recette?populate=*,recette.cover`
+  );
+  return result.data;
+};
+
+export const getBlogs = async () => {
+  const result =
+    await axios.get(`${process.env.STRAPI_URL}/api/blog?populate=*,blog.cover,blog.categorie`);
+  return result.data;
+};

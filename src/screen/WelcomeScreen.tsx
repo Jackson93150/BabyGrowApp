@@ -37,25 +37,21 @@ export default function WelcomeScreen() {
           <CategoryCard
             imageSource={require("/assets/food.png")}
             text={"Recette"}
-            color={Colors.yellow}
-          />
+            color={Colors.yellow} redirect={"Recipe"} data={"Recette"}          />
           <CategoryCard
             imageSource={require("/assets/blog.png")}
             text={"Blog"}
-            color={Colors.pastelBlue}
-          />
+            color={Colors.pastelBlue} redirect={"Blog"} data={"Blog"}          />
         </View>
         <View style={styles.grid}>
           <CategoryCard
             imageSource={require("/assets/doctor.png")}
             text={"Docteur"}
-            color={Colors.pastelGreen}
-          />
+            color={Colors.gray} redirect={"Welcome"} data={"Docteur"}          />
           <CategoryCard
             imageSource={require("/assets/activity.png")}
             text={"Activité"}
-            color={Colors.pink}
-          />
+            color={Colors.gray} redirect={"Welcome"} data={"Activité"}          />
         </View>
       </View>
       <Navigation/>
@@ -78,7 +74,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "80%",
     height: "fit-content",
-    marginTop: 20,
   },
   menu: {
     width: "100%",

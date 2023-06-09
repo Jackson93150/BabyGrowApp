@@ -1,7 +1,6 @@
 import {
   View,
   ImageBackground,
-  Image,
   StyleSheet,
   Text,
   TextInput,
