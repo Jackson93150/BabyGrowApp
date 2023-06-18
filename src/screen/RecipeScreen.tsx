@@ -4,6 +4,7 @@ import Colors from "../constant/Colors";
 import CategoryCard from "../component/categoryCard";
 import Navigation from "../component/navigation";
 import { getRecipes } from "../services/api";
+import { getRandomColor } from "../utils/colors";
 
 export default function RecipeScreen() {
   const [recipe, setRecipes] = useState<any>();
@@ -31,7 +32,7 @@ export default function RecipeScreen() {
               key={index}
               imageSource={{ uri: item.cover.data.attributes.url }}
               text={item.titre}
-              color={Colors.gray}
+              color={getRandomColor()}
               redirect={"RecipeInfo"}
               data={item}
             />

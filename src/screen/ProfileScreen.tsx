@@ -20,6 +20,7 @@ export type StackParamList = {
   Welcome: undefined;
   Profile: undefined;
   EditProfile: undefined;
+  NewBaby: undefined;
 };
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
@@ -68,7 +69,7 @@ export default function ProfileScreen() {
               resizeMode="contain"
             />
           </Pressable>
-          <Pressable style={styles.pressable}>
+          <Pressable style={styles.pressable} onPress={() => navigation.navigate("NewBaby")}>
           <Image
               source={require("/assets/child.png")}
               style={styles.logo}
