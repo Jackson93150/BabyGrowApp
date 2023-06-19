@@ -20,18 +20,18 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Blog" component={BlogScreen} />
+        <Stack.Screen name="BlogInfo" component={BlogInfoScreen} />
         <Stack.Screen name="Recipe" component={RecipeScreen} />
         <Stack.Screen name="RecipeInfo" component={RecipeInfoScreen} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="NewUser" component={NewUserScreen} />
         <Stack.Screen name="AddBaby" component={AddBabyScreen} />
         <Stack.Screen name="NewBaby" component={NewBabyScreen} />
         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Blog" component={BlogScreen} />
-        <Stack.Screen name="BlogInfo" component={BlogInfoScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
