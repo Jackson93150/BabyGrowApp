@@ -273,7 +273,11 @@ export default function VaccinScreen() {
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.content}>
             <View style={styles.topFlex}>
-              <View style={styles.picture} />
+                <Image
+                  source={require("/assets/userpic.png")}
+                  style={styles.pic}
+                  resizeMode="cover"
+                />
               <View style={styles.flexName}>
                 <Text style={styles.name}>{babies[0].first_name}</Text>
               </View>
@@ -662,4 +666,9 @@ const styles = StyleSheet.create({
     width: 18,
     right: "-10vw",
   },
+  pic: {
+    height: 100,
+    width: 100,
+    borderRadius: 50,
+  }
 });

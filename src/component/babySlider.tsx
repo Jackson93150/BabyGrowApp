@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-} from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import Colors from "../constant/Colors";
 import FontSize from "../constant/FontSize";
 import { getBabies } from "../services/api";
@@ -29,15 +25,21 @@ const BabySlide = () => {
           <Text style={styles.info}>N'a rien de prévu</Text>
         </View>
       )}
-      <View style={styles.subCard}/>
-      <View style={styles.picture}/>
+      <View style={styles.subCard} />
+      <View style={styles.picture}>
+        <Image
+          source={require("/assets/baby.jpg")}
+          resizeMode="cover"
+          style={styles.logo}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   picture: {
-    position: 'absolute',
+    position: "absolute",
     width: 100,
     height: 100,
     backgroundColor: Colors.primary,
@@ -76,6 +78,11 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.pink,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+  },
+  logo: {
+    height: "100%",
+    width: "100%",
+    borderRadius: 50,
   }
 });
 

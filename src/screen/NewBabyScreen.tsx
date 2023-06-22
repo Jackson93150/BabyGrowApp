@@ -3,6 +3,7 @@ import {
   ImageBackground,
   StyleSheet,
   Text,
+  Image,
   TextInput,
   Pressable,
 } from "react-native";
@@ -106,7 +107,13 @@ export default function NewBabyScreen() {
       {user && (
         <View style={styles.content}>
           <Text style={styles.title}>Bébé</Text>
-          <View style={styles.circle} />
+          <View style={styles.circle}>
+          <Image
+              source={require("/assets/baby.jpg")}
+              style={styles.circle}
+              resizeMode="cover"
+            />
+          </View>
 
           <Text style={styles.textFieldName}>Prénom du bébé</Text>
           <TextInput

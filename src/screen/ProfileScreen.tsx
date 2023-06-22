@@ -51,7 +51,13 @@ export default function ProfileScreen() {
       {user && (
         <View style={styles.content}>
           <Text style={styles.title}>Mon Profil</Text>
-          <View style={styles.circle} />
+          <View style={styles.circle}>
+          <Image
+              source={require("/assets/userpic.png")}
+              style={styles.circle}
+              resizeMode="cover"
+            />
+          </View>
           <Text style={styles.name}>
             {user.first_name} {user.last_name}
           </Text>

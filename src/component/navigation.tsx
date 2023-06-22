@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 export type StackParamList = {
   Welcome: undefined;
   Profile: undefined;
+  Vaccin: undefined;
 };
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
@@ -34,7 +35,7 @@ const Navigation = () => {
           <Text style={styles.textItem}>Acceuil</Text>
         </View>
         <View style={styles.container}>
-          <Pressable style={styles.circle}>
+          <Pressable style={styles.circle} onPress={() => navigation.navigate("Vaccin")}>
             <Image
               source={require("/assets/injection.png")}
               style={styles.logo}

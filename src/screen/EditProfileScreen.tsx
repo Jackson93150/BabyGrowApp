@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  Image,
   Pressable,
 } from "react-native";
 import React, { useEffect, useState } from "react";
@@ -69,11 +70,17 @@ export default function EditProfileScreen() {
       source={require("/assets/WelcomeBackground.png")}
       style={styles.container}
     >
-      <Return onPress={() => navigation.navigate("Profile")}/>
+      <Return onPress={() => navigation.navigate("Profile")} />
       {user && (
         <View style={styles.content}>
           <Text style={styles.title}>Profile</Text>
-          <View style={styles.circle} />
+          <View style={styles.circle}>
+            <Image
+              source={require("/assets/userpic.png")}
+              style={styles.circle}
+              resizeMode="cover"
+            />
+          </View>
 
           <TextInput
             placeholder={user.first_name}
