@@ -24,10 +24,10 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Vaccin" component={VaccinScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Activity" component={ActivityScreen} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="ActivityInfo" component={ActivityInfoScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Blog" component={BlogScreen} />
         <Stack.Screen name="BlogInfo" component={BlogInfoScreen} />
         <Stack.Screen name="Recipe" component={RecipeScreen} />

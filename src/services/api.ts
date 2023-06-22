@@ -32,6 +32,36 @@ export const saveProfile = async (data: any) => {
   });
 };
 
+export const saveVaccin = async (data: any) => {
+  const jwtToken = await AsyncStorage.getItem("jwtToken");
+  await axios.post(`${process.env.API_URL}/vaccinations`, data, {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export const saveWeight = async (data: any) => {
+  const jwtToken = await AsyncStorage.getItem("jwtToken");
+  await axios.post(`${process.env.API_URL}/babyweight`, data, {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export const saveHeight = async (data: any) => {
+  const jwtToken = await AsyncStorage.getItem("jwtToken");
+  await axios.post(`${process.env.API_URL}/babyHeight`, data, {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+};
+
 export const getBabies = async () => {
   const jwtToken = await AsyncStorage.getItem("jwtToken");
   const result = await axios.get(`${process.env.API_URL}/babyprofiles/users`, {
@@ -43,12 +73,84 @@ export const getBabies = async () => {
   return result.data;
 };
 
+export const getWeight = async (data: any) => {
+  const jwtToken = await AsyncStorage.getItem("jwtToken");
+  const result = await axios.get(
+    `${process.env.API_URL}/babyweight/${data}`,
+    {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return result.data;
+};
+
+export const getHeight = async (data: any) => {
+  const jwtToken = await AsyncStorage.getItem("jwtToken");
+  const result = await axios.get(
+    `${process.env.API_URL}/babyHeight/${data}`,
+    {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return result.data;
+};
+
 export const getVaccins = async (data: any) => {
   const jwtToken = await AsyncStorage.getItem("jwtToken");
-  const result = await axios.get(`${process.env.API_URL}/vaccinations`,{
-    params: {
-      ids: data.join(','),
+  const result = await axios.get(
+    `${process.env.API_URL}/vaccinations/${data}`,
+    {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return result.data;
+};
+
+export const edditVaccin = async (data: any) => {
+  const jwtToken = await AsyncStorage.getItem("jwtToken");
+  const result = await axios.put(`${process.env.API_URL}/vaccinations`, data, {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      "Content-Type": "application/json",
     },
+  });
+  return result.data;
+};
+
+export const edditWeight = async (data: any) => {
+  const jwtToken = await AsyncStorage.getItem("jwtToken");
+  const result = await axios.put(`${process.env.API_URL}/babyweight`, data, {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+  return result.data;
+};
+
+export const edditHeight = async (data: any) => {
+  const jwtToken = await AsyncStorage.getItem("jwtToken");
+  const result = await axios.put(`${process.env.API_URL}/babyHeight`, data, {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+  return result.data;
+};
+
+export const deleteVaccin = async (data: any) => {
+  const jwtToken = await AsyncStorage.getItem("jwtToken");
+  const result = await axios.delete(`${process.env.API_URL}/vaccinations/${data}`, {
     headers: {
       Authorization: `Bearer ${jwtToken}`,
       "Content-Type": "application/json",
