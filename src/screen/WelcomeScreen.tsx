@@ -25,7 +25,6 @@ type HomeScreenNavigationProp = NativeStackNavigationProp<
 
 export default function WelcomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
-
   return (
     <ImageBackground
       source={require("/assets/WelcomeBackground.png")}
@@ -51,7 +50,7 @@ export default function WelcomeScreen() {
           <CategoryCard
             imageSource={require("/assets/activity.png")}
             text={"Activité"}
-            color={Colors.gray} redirect={"Welcome"} data={"Activité"}          />
+            color={Colors.pink} redirect={"Activity"} data={"Activité"}          />
         </View>
       </View>
       <Navigation/>

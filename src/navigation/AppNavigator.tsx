@@ -13,6 +13,9 @@ import RecipeScreen from "../screen/RecipeScreen";
 import RecipeInfoScreen from "../screen/RecipeInfoScreen";
 import BlogScreen from "../screen/BlogScreen";
 import BlogInfoScreen from "../screen/BlogInfoScreen";
+import ActivityScreen from "../screen/ActivityScreen";
+import ActivityInfoScreen from "../screen/ActivityInfoScreen";
+import VaccinScreen from "../screen/VaccinScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,12 +23,15 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Vaccin" component={VaccinScreen} />
+        <Stack.Screen name="Activity" component={ActivityScreen} />
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="ActivityInfo" component={ActivityInfoScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Blog" component={BlogScreen} />
         <Stack.Screen name="BlogInfo" component={BlogInfoScreen} />
         <Stack.Screen name="Recipe" component={RecipeScreen} />
         <Stack.Screen name="RecipeInfo" component={RecipeInfoScreen} />
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="NewUser" component={NewUserScreen} />
         <Stack.Screen name="AddBaby" component={AddBabyScreen} />

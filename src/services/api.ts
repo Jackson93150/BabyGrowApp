@@ -43,6 +43,20 @@ export const getBabies = async () => {
   return result.data;
 };
 
+export const getVaccins = async (data: any) => {
+  const jwtToken = await AsyncStorage.getItem("jwtToken");
+  const result = await axios.get(`${process.env.API_URL}/vaccinations`,{
+    params: {
+      ids: data.join(','),
+    },
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+  return result.data;
+};
+
 export const getMe = async () => {
   const jwtToken = await AsyncStorage.getItem("jwtToken");
   const result = await axios.get(`${process.env.API_URL}/auth/me`, {
@@ -62,7 +76,15 @@ export const getRecipes = async () => {
 };
 
 export const getBlogs = async () => {
-  const result =
-    await axios.get(`${process.env.STRAPI_URL}/api/blog?populate=*,blog.cover,blog.categorie`);
+  const result = await axios.get(
+    `${process.env.STRAPI_URL}/api/blog?populate=*,blog.cover,blog.categorie`
+  );
+  return result.data;
+};
+
+export const getActivity = async () => {
+  const result = await axios.get(
+    `${process.env.STRAPI_URL}/api/activity?populate=*,activity.cover`
+  );
   return result.data;
 };

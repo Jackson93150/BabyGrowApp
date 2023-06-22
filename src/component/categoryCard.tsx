@@ -22,6 +22,8 @@ export type StackParamList = {
   Welcome: undefined;
   Recipe: undefined;
   Blog: undefined;
+  Activity: undefined;
+  ActivityInfo: { userId: any };
   RecipeInfo: { userId: any };
   BlogInfo: { userId: any };
 };

@@ -1,41 +1,36 @@
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  ScrollView,
-} from "react-native";
+import { Text, Image, StyleSheet, ScrollView, View } from "react-native";
 import { useRoute, RouteProp, useNavigation } from "@react-navigation/native";
 import Navigation from "../component/navigation";
 import FontSize from "../constant/FontSize";
+import { getRandomColor } from "../utils/colors";
 import Return from "../component/return";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { getRandomColor } from "../utils/colors";
+import Colors from "../constant/Colors";
 
 const randColor = getRandomColor();
 
 export type StackParamList = {
   Welcome: undefined;
-  Recipe: undefined;
+  Activity: undefined;
   Login: undefined;
-  Blog: undefined;
-  BlogInfo: { userId: any };
+  NewUser: undefined;
+  ActivityInfo: { userId: any };
 };
 
-type BlogInfoRouteProp = RouteProp<StackParamList, "BlogInfo">;
+type ActivityInfoRouteProp = RouteProp<StackParamList, "ActivityInfo">;
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   StackParamList,
-  "BlogInfo"
+  "ActivityInfo"
 >;
 
-export default function BlogInfoScreen() {
-  const route = useRoute<BlogInfoRouteProp>();
-  const userId = route.params?.userId;
+export default function ActivityInfoScreen() {
+  const route = useRoute<ActivityInfoRouteProp>();
   const navigation = useNavigation<HomeScreenNavigationProp>();
+  const userId = route.params?.userId;
   console.log(userId);
   return (
     <View style={styles.container}>
-      <Return onPress={() => navigation.navigate("Blog")} />
+      <Return onPress={() => navigation.navigate("Activity")} />
       <Text style={styles.name}>{userId.titre}</Text>
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.subContent}>
@@ -45,21 +40,9 @@ export default function BlogInfoScreen() {
             resizeMode="contain"
           />
           <Text style={styles.titleCard}>{userId.titre}</Text>
-          <Text style={styles.text}>{userId.description}</Text>
-          {userId.categorie.map((item: any, index: any) => (
-            <View key={index}>
-              <View style={styles.vectorContainer}>
-                <Image
-                  source={require("/assets/vector.png")}
-                  style={styles.vector}
-                  resizeMode="contain"
-                />
-                <Text style={styles.title}>{item.nom}</Text>
-              </View>
-              <Text style={styles.text}>{item.description}</Text>
-            </View>
-          ))}
-          <View style={styles.end} />
+          <Text style={styles.info}>{userId.description}</Text>
+          <Text style={styles.title}>Equipement</Text>
+          <Text style={styles.text}>{userId.equipment}</Text>
         </View>
       </ScrollView>
       <Navigation />
@@ -86,19 +69,12 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: "250px",
+    borderRadius: 25,
     aspectRatio: 1,
-  },
-  vectorContainer: {
-    width: "100%",
-    height: "fit-content",
+    marginTop: "20px",
     marginBottom: "20px",
   },
-  vector: {
-    height: "150px",
-    aspectRatio: 1,
-  },
   info: {
-    textAlign: "center",
     fontSize: FontSize.small,
     fontWeight: "600",
     width: "100%",
@@ -113,20 +89,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   title: {
-    position: "absolute",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
     fontSize: FontSize.medium,
-    fontWeight: "700",
-    height: "100%",
-    width: "40%",
-    left: "30%",
+    fontWeight: "800",
+    width: "100%",
   },
   titleCard: {
     fontSize: FontSize.medium,
-    fontWeight: "600",
+    fontWeight: "700",
     backgroundColor: randColor,
     width: "fit-content",
     padding: "15px",
@@ -139,9 +108,12 @@ const styles = StyleSheet.create({
     fontSize: FontSize.small,
     fontWeight: "600",
     width: "100%",
-    marginBottom: 15,
+    marginBottom: 100,
   },
-  end: {
+  textEnd: {
+    fontSize: FontSize.small,
+    fontWeight: "600",
+    width: "100%",
     marginBottom: 100,
   },
 });
